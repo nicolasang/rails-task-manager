@@ -1,0 +1,22 @@
+<h1>Task: <%= @task.title %></h1>
+
+<h2 class="task_card"><%= @task.details %></h2>
+
+<% if @task.completed %>
+  <div>
+      <p><i class="far fa-check-circle"></i>
+      This task is completed.</p>
+  </div>
+<% else %>
+  <div>
+    <p><i class="far fa-circle"></i>
+    This task is not completed yet</p>
+  </div>
+<% end %>
+
+<%= link_to edit_path, method: :get do %>
+  <p class='btn btn-primary'>Edit task</p>
+<% end %>
+
+<p></p>
+<i class="fas fa-undo-alt"></i><%= link_to " Back to list", tasks_path %>

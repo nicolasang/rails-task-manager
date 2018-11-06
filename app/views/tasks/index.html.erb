@@ -1,0 +1,29 @@
+<h1>All tasks</h1>
+
+<div class="container">
+  <div class="card-header" style="text-decoration:none">
+    <ul class="list-unstyled">
+      <% @tasks.each do |t|  %>
+        <li>
+          <%= check_box_tag 'task_id[]', t.id, t.completed %>
+          <% if t.completed %>
+            <i class="far fa-check-circle"></i>
+          <% else %>
+            <i class="far fa-circle"></i>
+          <% end %>
+          <%= link_to t.title, task_path(t), method: :get %>
+
+          <%= link_to delete_path(t), method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<p></p>
+
+<div>
+  <p class="btn btn-warning"><%= link_to "Add a new task", new_path, method: :get %></p>
+</div>
